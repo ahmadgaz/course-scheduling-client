@@ -5,6 +5,7 @@ const config: Config = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './state/**/*.{js,ts,jsx,tsx,mdx}',
     './utils/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
@@ -59,7 +60,7 @@ const config: Config = {
   },
   plugins: [
     require('@tailwindcss/forms'),
-    plugin(function ({ addComponents }) {
+    plugin(function ({ addComponents, addUtilities }) {
       addComponents({
         '.animation': {},
         '.button-primary': {},
@@ -67,6 +68,14 @@ const config: Config = {
         '.button-tertiary': {},
         '.button-ghost': {},
         '.button-icon': {},
+        '.navbar': {},
+        '.navlinks': {},
+        '.navlinks-mobile': {},
+        '.navlinks-mobile-menu-open': {},
+        '.navlinks-mobile-menu-closed': {},
+      });
+      addUtilities({
+        '.max-width': {},
       });
     }),
   ],

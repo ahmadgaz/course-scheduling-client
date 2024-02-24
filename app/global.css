@@ -21,4 +21,25 @@
   .button-icon {
     @apply animation flex h-[45px] w-[45px] items-center justify-center text-primary hover:opacity-50 active:opacity-25 disabled:text-neutral;
   }
+  .navbar {
+    @apply animation max-width mx-auto box-border flex h-[73px] items-center justify-between px-[32px];
+  }
+  .navlinks {
+    @apply flex;
+  }
+  .navlinks-mobile {
+    @apply max-lg:fixed max-lg:left-0 max-lg:top-0 max-lg:h-full max-lg:w-full max-lg:bg-background;
+  }
+  .navlinks-mobile-menu-open {
+    @apply max-lg:z-50;
+  }
+  .navlinks-mobile-menu-closed {
+    @apply max-lg:z-0 max-lg:hidden;
+  }
+}
+
+@layer utilities {
+  .max-width {
+    @apply w-full max-w-[1076px];
+  }
 }

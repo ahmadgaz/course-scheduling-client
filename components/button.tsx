@@ -5,24 +5,20 @@ import { LoadingSpinner } from './loadingSpinner';
 
 type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'ghost';
 
-export default function Button({
-  variant,
-  prefix,
-  postfix,
-  disabled,
-  loading,
-  children,
-}: {
-  variant: ButtonVariant | React.ReactElement;
-  prefix?: React.ReactElement;
-  postfix?: React.ReactElement;
-  disabled?: boolean;
-  loading?: boolean;
-  children?: React.ReactNode;
-}) {
+export default function Button(
+  props: {
+    variant: ButtonVariant | React.ReactElement;
+    prefix?: React.ReactElement;
+    postfix?: React.ReactElement;
+    disabled?: boolean;
+    loading?: boolean;
+    children?: React.ReactNode;
+  } & React.ButtonHTMLAttributes<HTMLButtonElement>,
+) {
+  const { variant, prefix, postfix, disabled, loading, children } = props;
   function BaseButton(props: React.ButtonHTMLAttributes<HTMLButtonElement>) {
     return (
-      <button disabled={disabled} {...props}>
+      <button {...props} disabled={disabled}>
         {loading ? <LoadingSpinner /> : props.children}
       </button>
     );
@@ -30,14 +26,15 @@ export default function Button({
 
   if (React.isValidElement(variant)) {
     return (
-      <BaseButton className="button-icon">
+      <BaseButton {...props} className={`${props.className} button-icon`}>
         <Icon icon={variant} w="45px" h="45px" />
       </BaseButton>
     );
   }
   return (
     <BaseButton
-      className={clsx({
+      {...props}
+      className={clsx(`${props.className}`, {
         'button-primary': variant === 'primary',
         'button-secondary': variant === 'secondary',
         'button-tertiary': variant === 'tertiary',
