@@ -10,6 +10,7 @@ import {
 import Link from 'next/link';
 import React from 'react';
 import clsx from 'clsx';
+import SearchWithDropdown from './forms/searchWithDropdown';
 
 const links = [
   { name: 'Courses', href: '/courses' },
@@ -41,6 +42,9 @@ export default function Navbar() {
       >
         <Logo />
       </Link>
+
+      {/* Search Bar */}
+      <SearchWithDropdown className="flex flex-1" />
 
       <Button
         variant={<Bars3Icon />}
