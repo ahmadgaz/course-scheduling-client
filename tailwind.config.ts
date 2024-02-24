@@ -1,9 +1,11 @@
 import type { Config } from 'tailwindcss';
+import plugin from 'tailwindcss/plugin';
 
 const config: Config = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './utils/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
@@ -55,6 +57,18 @@ const config: Config = {
       10: '17px',
     },
   },
-  plugins: [require('@tailwindcss/forms')],
+  plugins: [
+    require('@tailwindcss/forms'),
+    plugin(function ({ addComponents }) {
+      addComponents({
+        '.animation': {},
+        '.button-primary': {},
+        '.button-secondary': {},
+        '.button-tertiary': {},
+        '.button-ghost': {},
+        '.button-icon': {},
+      });
+    }),
+  ],
 };
 export default config;
