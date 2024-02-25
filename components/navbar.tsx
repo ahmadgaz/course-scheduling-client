@@ -44,7 +44,7 @@ export default function Navbar() {
       </Link>
 
       {/* Search Bar */}
-      <SearchWithDropdown className="flex flex-1" />
+      <SearchWithDropdown className={clsx("flex flex-1 max-lg:pl-[32px]", { 'max-lg:hidden': !showSearch })} />
 
       <Button
         variant={<Bars3Icon />}
@@ -62,11 +62,24 @@ export default function Navbar() {
             <Link href={link.href}>{link.name}</Link>
           </li>
         ))}
-        <Button
-          className="lg:hidden"
-          variant={<XMarkIcon />}
-          onClick={toggleMenu}
-        />
+        
+        <div className="">
+          <Button
+            variant="primary"
+          >
+            Register
+          </Button>
+          <Button
+            variant="tertiary"
+          >
+            Sign In
+          </Button>
+          <Button
+            className="lg:hidden"
+            variant={<XMarkIcon />}
+            onClick={toggleMenu}
+          />
+        </div>
       </ul>
     </nav>
   );
