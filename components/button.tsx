@@ -1,7 +1,8 @@
-import Icon from '@/components/icon';
 import React from 'react';
 import clsx from 'clsx';
-import { LoadingSpinner } from './loadingSpinner';
+
+import LoadingSpinner from '@/components/loadingSpinner';
+import Icon from '@/components/icon';
 
 type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'ghost';
 

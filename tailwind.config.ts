@@ -69,10 +69,6 @@ const config: Config = {
         '.button-ghost': {},
         '.button-icon': {},
         '.navbar': {},
-        '.navlinks': {},
-        '.navlinks-mobile': {},
-        '.navlinks-mobile-menu-open': {},
-        '.navlinks-mobile-menu-closed': {},
       });
       addUtilities({
         '.max-width': {},

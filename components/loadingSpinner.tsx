@@ -1,4 +1,4 @@
-export function LoadingSpinner({ className }: { className?: string }) {
+export default function LoadingSpinner({ className }: { className?: string }) {
   return (
     <div className={className}>
       <div className="h-5 w-5 ">

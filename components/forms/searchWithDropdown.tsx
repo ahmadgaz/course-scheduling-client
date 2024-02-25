@@ -1,4 +1,5 @@
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+
 import Icon from '@/components/icon';
 
 export default function SearchWithDropdown(
@@ -15,8 +16,8 @@ export default function SearchWithDropdown(
         placeholder="Search"
       />
       <div className="relative h-full">
-        <div className="absolute right-4 flex h-full items-center">
-          <Icon icon={<MagnifyingGlassIcon />} w="14px" h="14px" />
+        <div className="absolute right-4 flex h-full w-[16px] items-center">
+          <Icon icon={<MagnifyingGlassIcon />} w="16px" h="16px" />
         </div>
       </div>
       <select className="flex h-full w-fit items-center rounded-r-[12px] border-y-2 border-r-2 border-border bg-background py-[5px] pl-[16px] pr-[38px]">

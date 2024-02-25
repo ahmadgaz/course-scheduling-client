@@ -7,34 +7,22 @@
     @apply transition-all duration-100 ease-in-out;
   }
   .button-primary {
-    @apply animation flex items-center justify-center gap-[10px] rounded-[20px] border-2 border-border bg-primary px-[20px] py-[5px] text-button text-background hover:opacity-50 active:opacity-25 disabled:bg-border disabled:text-neutral;
+    @apply animation flex h-fit items-center justify-center gap-[10px] rounded-[20px] border-2 border-border bg-primary px-[20px] py-[5px] text-button text-background hover:opacity-50 active:opacity-25 disabled:bg-border disabled:text-neutral;
   }
   .button-secondary {
-    @apply animation flex items-center  justify-center gap-[10px] rounded-[20px] border-2 border-border bg-secondary px-[20px] py-[5px] text-button text-background hover:opacity-50 active:opacity-25 disabled:bg-border disabled:text-neutral;
+    @apply animation flex h-fit items-center justify-center gap-[10px] rounded-[20px] border-2 border-border bg-secondary px-[20px] py-[5px] text-button text-background hover:opacity-50 active:opacity-25 disabled:bg-border disabled:text-neutral;
   }
   .button-tertiary {
-    @apply animation flex items-center justify-center gap-[10px] px-[20px] py-[5px] text-button text-primary hover:opacity-50 active:opacity-25 disabled:text-neutral;
+    @apply animation flex  h-fit items-center justify-center gap-[10px] px-[20px] py-[5px] text-button text-primary hover:opacity-50 active:opacity-25 disabled:text-neutral;
   }
   .button-ghost {
-    @apply animation flex items-center justify-center gap-[10px] rounded-[20px] border-2 border-secondary  px-[20px] py-[5px] text-button text-secondary hover:opacity-50 active:opacity-25 disabled:border-neutral disabled:text-neutral;
+    @apply animation flex h-fit items-center justify-center gap-[10px] rounded-[20px] border-2 border-secondary px-[20px] py-[5px] text-button text-secondary hover:opacity-50 active:opacity-25 disabled:border-neutral disabled:text-neutral;
   }
   .button-icon {
     @apply animation flex h-[45px] w-[45px] items-center justify-center text-primary hover:opacity-50 active:opacity-25 disabled:text-neutral;
   }
   .navbar {
-    @apply animation max-width mx-auto box-border flex h-[73px] items-center justify-between px-[32px];
-  }
-  .navlinks {
-    @apply flex;
-  }
-  .navlinks-mobile {
-    @apply max-lg:fixed max-lg:left-0 max-lg:top-0 max-lg:h-full max-lg:w-full max-lg:bg-background;
-  }
-  .navlinks-mobile-menu-open {
-    @apply max-lg:z-50;
-  }
-  .navlinks-mobile-menu-closed {
-    @apply max-lg:z-0 max-lg:hidden;
+    @apply animation mx-auto box-border flex h-[73px] items-center justify-between px-[32px] max-width;
   }
 }
 
