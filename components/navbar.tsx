@@ -12,6 +12,7 @@ import clsx from 'clsx';
 import SearchWithDropdown from '@/components/forms/searchWithDropdown';
 import Button from '@/components/button';
 import Logo from '@/components/logo';
+import { usePathname } from 'next/navigation';
 
 const links = [
   { name: 'Courses', href: '/courses' },
@@ -24,72 +25,103 @@ export default function Navbar() {
   const [showSearch, setShowSearch] = React.useState(false);
   const toggleSearch = () => setShowSearch(!showSearch);
   return (
-    <nav className="navbar">
-      <Button
-        variant={<MagnifyingGlassIcon />}
-        className={clsx('lg:hidden', { hidden: showSearch })}
-        onClick={toggleSearch}
-      />
-      <Button
-        variant={<XMarkIcon />}
-        className={clsx('lg:hidden', { hidden: !showSearch })}
-        onClick={toggleSearch}
-      />
+    <header className="border-b-2 border-border">
+      <nav className="animation mx-auto box-border flex h-[73px] items-center justify-between px-[32px] max-width">
+        <Button
+          variant={<MagnifyingGlassIcon />}
+          className={clsx('lg:hidden', { hidden: showSearch })}
+          onClick={toggleSearch}
+        />
+        <Button
+          variant={<XMarkIcon />}
+          className={clsx('lg:hidden', { hidden: !showSearch })}
+          onClick={toggleSearch}
+        />
 
-      {/* Logo */}
-      <Link
-        className={clsx('lg:pr-[32px]', { 'max-lg:hidden': showSearch })}
-        href="/"
-      >
-        <Logo />
-      </Link>
+        {/* Logo */}
+        <Link
+          className={clsx('lg:pr-[32px]', { 'max-lg:hidden': showSearch })}
+          href="/"
+        >
+          <Logo />
+        </Link>
 
-      {/* Search Bar */}
-      <SearchWithDropdown
-        className={clsx('flex flex-1 max-lg:pl-[32px]', {
-          'max-lg:hidden': !showSearch,
-        })}
-      />
+        {/* Search Bar */}
+        <SearchWithDropdown
+          className={clsx('flex flex-1 max-lg:pl-[32px]', {
+            'max-lg:hidden': !showSearch,
+          })}
+        />
 
-      <Button
-        variant={<Bars3Icon />}
-        className={clsx('lg:hidden', { hidden: showSearch })}
-        onClick={toggleMenu}
-      />
-      <div
-        className={clsx(
-          'flex items-center gap-[32px] p-[16px] text-button text-primary max-lg:fixed max-lg:left-0 max-lg:top-0 max-lg:h-full max-lg:w-full max-lg:flex-col-reverse max-lg:gap-[16px] max-lg:overflow-y-scroll max-lg:bg-background lg:pl-[32px]',
-          {
-            'max-lg:z-50': showMenu,
-            'max-lg:z-0 max-lg:hidden': !showMenu,
-          },
-        )}
-      >
-        <ul className="flex gap-[32px] max-lg:flex-1 max-lg:flex-col max-lg:items-center">
-          {links.map((link) => (
-            <li key={link.href}>
-              <Link href={link.href}>{link.name}</Link>
-            </li>
-          ))}
-        </ul>
+        <Button
+          variant={<Bars3Icon />}
+          className={clsx('lg:hidden', { hidden: showSearch })}
+          onClick={toggleMenu}
+        />
+        <div
+          className={clsx(
+            'flex items-center gap-[16px] text-button text-primary max-lg:fixed max-lg:left-0 max-lg:top-0 max-lg:h-full max-lg:w-full max-lg:flex-col-reverse max-lg:gap-[16px] max-lg:overflow-y-scroll max-lg:bg-background max-lg:p-[16px] lg:pl-[16px]',
+            {
+              'max-lg:z-50': showMenu,
+              'max-lg:z-0 max-lg:hidden': !showMenu,
+            },
+          )}
+        >
+          <ul className="flex gap-[5px] max-lg:flex-1 max-lg:flex-col max-lg:items-center max-lg:gap-[32px]">
+            {links.map((link) => (
+              <li key={link.href}>
+                <Navlink href={link.href}>{link.name}</Navlink>
+              </li>
+            ))}
+          </ul>
 
-        <hr className="w-full pb-[16px] text-border lg:hidden" />
+          <hr className="w-full pb-[16px] text-border lg:hidden" />
 
-        <div className="flex w-full items-center gap-[16px] max-lg:justify-between">
-          <div className="h-[45px] w-[45px] lg:hidden" />
-          <div className="flex items-center gap-[16px]">
-            <Button variant="primary">Register</Button>
-            <Button variant="ghost" className="border-primary text-primary">
-              Sign In
-            </Button>
+          <div className="flex w-full items-center gap-[16px] max-lg:justify-between">
+            <div className="h-[45px] w-[45px] lg:hidden" />
+            <div className="flex items-center gap-[16px]">
+              <Button variant="primary">Register</Button>
+              <Button variant="ghost" className="border-primary text-primary">
+                Sign In
+              </Button>
+            </div>
+            <Button
+              className="lg:hidden"
+              variant={<XMarkIcon />}
+              onClick={toggleMenu}
+            />
           </div>
-          <Button
-            className="lg:hidden"
-            variant={<XMarkIcon />}
-            onClick={toggleMenu}
-          />
         </div>
-      </div>
-    </nav>
+      </nav>
+    </header>
+  );
+}
+
+function Navlink({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) {
+  const pathname = usePathname();
+  React.useEffect(() => {
+    setLoading(false);
+  }, [pathname]);
+  const [loading, setLoading] = React.useState(false);
+  const handleClick = () => pathname !== href && setLoading(true);
+  return (
+    <Link
+      href={href}
+      onClick={handleClick}
+      className={clsx(
+        'animation rounded-lg px-3 py-1 hover:bg-primary hover:bg-opacity-25',
+        {
+          'animate-pulse bg-primary bg-opacity-10': loading,
+        },
+      )}
+    >
+      {children}
+    </Link>
   );
 }

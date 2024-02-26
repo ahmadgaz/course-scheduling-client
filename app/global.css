@@ -2,32 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-  .animation {
-    @apply transition-all duration-100 ease-in-out;
-  }
-  .button-primary {
-    @apply animation flex h-fit items-center justify-center gap-[10px] rounded-[20px] border-2 border-border bg-primary px-[20px] py-[5px] text-button text-background hover:opacity-50 active:opacity-25 disabled:bg-border disabled:text-neutral;
-  }
-  .button-secondary {
-    @apply animation flex h-fit items-center justify-center gap-[10px] rounded-[20px] border-2 border-border bg-secondary px-[20px] py-[5px] text-button text-background hover:opacity-50 active:opacity-25 disabled:bg-border disabled:text-neutral;
-  }
-  .button-tertiary {
-    @apply animation flex  h-fit items-center justify-center gap-[10px] px-[20px] py-[5px] text-button text-primary hover:opacity-50 active:opacity-25 disabled:text-neutral;
-  }
-  .button-ghost {
-    @apply animation flex h-fit items-center justify-center gap-[10px] rounded-[20px] border-2 border-secondary px-[20px] py-[5px] text-button text-secondary hover:opacity-50 active:opacity-25 disabled:border-neutral disabled:text-neutral;
-  }
-  .button-icon {
-    @apply animation flex h-[45px] w-[45px] items-center justify-center text-primary hover:opacity-50 active:opacity-25 disabled:text-neutral;
-  }
-  .navbar {
-    @apply animation mx-auto box-border flex h-[73px] items-center justify-between px-[32px] max-width;
-  }
-}
-
-@layer utilities {
-  .max-width {
-    @apply w-full max-w-[1076px];
-  }
+::selection {
+  background: #77a4d7;
 }

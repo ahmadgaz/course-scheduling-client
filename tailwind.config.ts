@@ -5,7 +5,6 @@ const config: Config = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './state/**/*.{js,ts,jsx,tsx,mdx}',
     './utils/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
@@ -51,27 +50,25 @@ const config: Config = {
       tag: ['16px', { fontWeight: 400 }],
       caption: ['12px', { fontWeight: 400 }],
     },
-    boxShadow: {
-      paper: '0px 4px 17px rgba(0, 0, 0, 0.05)',
-    },
-    backdropBlur: {
-      10: '17px',
+    extend: {
+      boxShadow: {
+        paper: '0px 4px 17px rgba(0, 0, 0, 0.05)',
+      },
+      backdropBlur: {
+        10: '17px',
+      },
     },
   },
   plugins: [
     require('@tailwindcss/forms'),
     plugin(function ({ addComponents, addUtilities }) {
-      addComponents({
-        '.animation': {},
-        '.button-primary': {},
-        '.button-secondary': {},
-        '.button-tertiary': {},
-        '.button-ghost': {},
-        '.button-icon': {},
-        '.navbar': {},
-      });
       addUtilities({
-        '.max-width': {},
+        '.animation': {
+          '@apply transition-all duration-100 ease-in-out': {},
+        },
+        '.max-width': {
+          '@apply w-full max-w-[1076px]': {},
+        },
       });
     }),
   ],

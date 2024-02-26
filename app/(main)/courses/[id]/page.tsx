@@ -12,5 +12,5 @@ export default async function Page({ params }: { params: { id: string } }) {
     notFound();
   }
 
-  return <main className=""></main>;
+  return <main className="">course: {id}</main>;
 }
