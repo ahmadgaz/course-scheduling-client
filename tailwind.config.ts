@@ -10,19 +10,19 @@ const config: Config = {
   ],
   theme: {
     colors: {
-      primary: '#F1B947',
-      secondary: '#77A4D7',
-      accent: '#B7D0ED',
-      background: '#FFFFFF',
-      text: '#14100C',
-      neutral: '#A4A4A4',
-      important: '#A60000',
-      highlight: '#F1F1F1',
-      good: '#12DAA9',
-      ok: '#FD9F1E',
-      bad: '#FF5353',
-      border: '#E5E5E580',
-      'hovered-border': '#FFFFFF80',
+      primary: 'rgb(var(--color-primary))',
+      secondary: 'rgb(var(--color-secondary))',
+      accent: 'rgb(var(--color-accent))',
+      background: 'rgb(var(--color-background))',
+      text: 'rgb(var(--color-text))',
+      neutral: 'rgb(var(--color-neutral))',
+      important: 'rgb(var(--color-important))',
+      highlight: 'rgb(var(--color-highlight))',
+      good: 'rgb(var(--color-good))',
+      ok: 'rgb(var(--color-ok))',
+      bad: 'rgb(var(--color-bad))',
+      border: 'rgb(var(--color-border)/ 0.5)',
+      'hovered-border': 'rgb(var(--color-hovered-border)/ 0.5)',
     },
     fontSize: {
       subtitle: ['13px', { lineHeight: '18px', fontWeight: 700 }],
@@ -50,6 +50,11 @@ const config: Config = {
       tag: ['16px', { fontWeight: 400 }],
       caption: ['12px', { fontWeight: 400 }],
     },
+    borderRadius: {
+      lg: '20px',
+      md: '12px',
+      sm: '6px',
+    },
     extend: {
       boxShadow: {
         paper: '0px 4px 17px rgba(0, 0, 0, 0.05)',
@@ -61,7 +66,7 @@ const config: Config = {
   },
   plugins: [
     require('@tailwindcss/forms'),
-    plugin(function ({ addComponents, addUtilities }) {
+    plugin(function ({ addUtilities }) {
       addUtilities({
         '.animation': {
           '@apply transition-all duration-100 ease-in-out': {},
@@ -69,6 +74,12 @@ const config: Config = {
         '.max-width': {
           '@apply w-full max-w-[1076px]': {},
         },
+        '.default-border': {
+          '@apply border-2 border-border': {},
+        },
+        '.default-border-focus': {
+          '@apply border-2 border-primary': {},
+        }
       });
     }),
   ],

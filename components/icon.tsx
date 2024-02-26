@@ -11,6 +11,6 @@ export default function Icon({
 }) {
   return React.cloneElement(icon, {
     className: `h-[${h}] w-[${w}]`,
-    strokeWidth: 3,
+    strokeWidth: 2.5,
   });
 }

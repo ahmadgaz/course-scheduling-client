@@ -81,7 +81,7 @@ export default function Navbar() {
             <div className="h-[45px] w-[45px] lg:hidden" />
             <div className="flex items-center gap-[16px]">
               <Button variant="primary">Register</Button>
-              <Button variant="ghost" className="border-primary text-primary">
+              <Button variant="ghost">
                 Sign In
               </Button>
             </div>
@@ -115,7 +115,7 @@ function Navlink({
       href={href}
       onClick={handleClick}
       className={clsx(
-        'animation rounded-lg px-3 py-1 hover:bg-primary hover:bg-opacity-25',
+        'animation rounded-sm px-3 py-1 hover:bg-primary hover:bg-opacity-25',
         {
           'animate-pulse bg-primary bg-opacity-10': loading,
         },

@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'xBook',
+  title: 'Courses',
 };
 
 export default async function Page({ params }: { params: { id: string } }) {
