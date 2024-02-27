@@ -1,4 +1,5 @@
 import React from 'react';
+import { twMerge } from 'tailwind-merge';
 
 interface IconProps extends React.SVGProps<SVGSVGElement> {
   icon: React.ReactElement;
@@ -8,8 +9,8 @@ interface IconProps extends React.SVGProps<SVGSVGElement> {
 
 export default function Icon({ icon, w, h, ...props }: IconProps) {
   return React.cloneElement(icon, {
-    className: `h-[${h}] w-[${w}]`,
     strokeWidth: 2.5,
     ...props,
+    className: twMerge(`h-[${h}] w-[${w}]`, props.className),
   });
 }
