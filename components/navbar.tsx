@@ -9,10 +9,10 @@ import Link from 'next/link';
 import React from 'react';
 import clsx from 'clsx';
 
-import SearchWithDropdown from '@/components/forms/searchWithDropdown';
+import SearchWithDropdown from '@/components/forms/search-with-dropdown';
 import Button from '@/components/button';
 import Logo from '@/components/logo';
-import { usePathname } from 'next/navigation';
+import Navlink from './navlink';
 
 const links = [
   { name: 'Courses', href: '/courses' },
@@ -81,9 +81,7 @@ export default function Navbar() {
             <div className="h-[45px] w-[45px] lg:hidden" />
             <div className="flex items-center gap-[16px]">
               <Button variant="primary">Register</Button>
-              <Button variant="ghost">
-                Sign In
-              </Button>
+              <Button variant="ghost">Sign In</Button>
             </div>
             <Button
               className="lg:hidden"
@@ -94,34 +92,5 @@ export default function Navbar() {
         </div>
       </nav>
     </header>
-  );
-}
-
-function Navlink({
-  href,
-  children,
-}: {
-  href: string;
-  children: React.ReactNode;
-}) {
-  const pathname = usePathname();
-  React.useEffect(() => {
-    setLoading(false);
-  }, [pathname]);
-  const [loading, setLoading] = React.useState(false);
-  const handleClick = () => pathname !== href && setLoading(true);
-  return (
-    <Link
-      href={href}
-      onClick={handleClick}
-      className={clsx(
-        'animation rounded-sm px-3 py-1 hover:bg-primary hover:bg-opacity-25',
-        {
-          'animate-pulse bg-primary bg-opacity-10': loading,
-        },
-      )}
-    >
-      {children}
-    </Link>
   );
 }

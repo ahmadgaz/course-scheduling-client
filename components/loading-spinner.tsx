@@ -1,6 +1,6 @@
-export default function LoadingSpinner({ className }: { className?: string }) {
+export default function LoadingSpinner(props: React.HTMLProps<HTMLDivElement>) {
   return (
-    <div className={className}>
+    <div {...props}>
       <div className="h-5 w-5 ">
         <svg
           className="h-5 w-5 animate-spin"

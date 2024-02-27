@@ -8,7 +8,6 @@ const inter = Inter({
   display: 'swap',
 });
 
-
 export const metadata: Metadata = {
   title: {
     template: '%s | SJSU Course Planner',

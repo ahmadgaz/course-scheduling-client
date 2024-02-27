@@ -19,21 +19,7 @@
     --color-hovered-border: 255 255 255;
   }
 }
-/* 
 
-// primary: '#F1B947',
-// secondary: '#77A4D7',
-// accent: '#B7D0ED',
-// background: '#FFFFFF',
-// text: '#14100C',
-// neutral: '#A4A4A4',
-// important: '#A60000',
-// highlight: '#F1F1F1',
-// good: '#12DAA9',
-// ok: '#FD9F1E',
-// bad: '#FF5353',
-// border: '#E5E5E580',
-// 'hovered-border': '#FFFFFF80', */
 ::selection {
   background: rgb(var(--color-secondary));
 }
