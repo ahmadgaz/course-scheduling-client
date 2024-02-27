@@ -7,7 +7,8 @@ import React from 'react';
 
 import RatingSummary from '@/components/rating-summary';
 import Breadcrumb from '@/components/breadcrumb';
-import Icon from '@/components/icon';
+import InfoCard from '@/components/info-card';
+import Tag from '@/components/tag';
 
 export async function generateMetadata({ params }: { params: { id: string } }) {
   return {
@@ -25,10 +26,27 @@ export default async function Page({ params }: { params: { id: string } }) {
   const rating = 2.6;
   const name = 'Jahan Ghofraniha';
   const reviewCount = 47;
+  const grade = 'A-';
+  const wouldTakeAgain = '39%';
+  const tags = [
+    'Hilarious',
+    'Respected',
+    'Caring',
+    'Amazing lectures',
+    'Inspirational',
+    'Accessible outside class',
+    'Participation matters',
+    'Graded by few things',
+    'Clear grading criteria',
+    'Get ready to read',
+    'Lots of homework',
+    'Tough grader',
+  ];
   const email = 'YqVp3@example.com';
 
   return (
     <main className="mx-auto flex max-w-[1076px] flex-col gap-[10px] p-[10px]">
+      {/* Rating Summary */}
       <Breadcrumb className="flex py-[10px]" />
       <div className="flex gap-[10px]">
         <RatingSummary
@@ -38,31 +56,28 @@ export default async function Page({ params }: { params: { id: string } }) {
           className="flex-1"
         />
         <div className="flex flex-col gap-[10px]">
-          <div className="default-border flex flex-1 items-center gap-[10px] rounded-lg bg-good p-[32px] opacity-75">
-            <Icon
-              icon={<ClipboardDocumentListIcon />}
-              h="45px"
-              w="45px"
-              className="text-text opacity-50 mix-blend-color-burn"
-            />
-            <div className="text-text opacity-50 mix-blend-color-burn">
-              <h3 className="text-title">A-</h3>
-              <p className="text-body">Average Grade</p>
-            </div>
-          </div>
-          <div className="default-border flex flex-1 items-center gap-[10px] rounded-lg bg-ok p-[32px] opacity-75">
-            <Icon
-              icon={<ArrowPathIcon />}
-              h="45px"
-              w="45px"
-              className="text-text opacity-75 mix-blend-color-burn"
-            />
-            <div className="text-text opacity-75 mix-blend-color-burn">
-              <h3 className="text-title">39%</h3>
-              <p className="text-body">Would Take Again</p>
-            </div>
-          </div>
+          <InfoCard
+            type="good"
+            icon={<ClipboardDocumentListIcon />}
+            title={grade}
+            subtitle="Average Grade"
+          />
+          <InfoCard
+            type="ok"
+            icon={<ArrowPathIcon />}
+            title={wouldTakeAgain}
+            subtitle="Would Take Again"
+          />
         </div>
+      </div>
+
+      {/* Tags */}
+      <div className="flex flex-wrap justify-center gap-[10px]">
+        {tags.map((tag) => (
+          <Tag key={tag} size="lg">
+            {tag}
+          </Tag>
+        ))}
       </div>
     </main>
   );

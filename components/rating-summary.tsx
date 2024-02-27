@@ -20,11 +20,11 @@ export default function RatingSummary({
   ...props
 }: RatingSummaryProps) {
   return (
-    <div className="default-border flex flex-1 items-end rounded-lg bg-ok p-[32px] opacity-75">
+    <div className="flex flex-1 items-end rounded-lg bg-ok p-[32px] opacity-75 default-border">
       <p className="flex-1 text-caption text-text opacity-75 mix-blend-color-burn">
         {reviewCount} Reviews
       </p>
-      <div className="flex flex-1 flex-col items-center gap-[3px] text-text opacity-75 mix-blend-color-burn">
+      <div className="flex h-full flex-auto flex-col items-center justify-center gap-[3px] text-text opacity-75 mix-blend-color-burn">
         <h1 className="text-center text-title">{name}</h1>
         <h2 className="text-rating">{rating}</h2>
         <div className="h-[50px]">

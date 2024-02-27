@@ -79,7 +79,7 @@ const config: Config = {
         },
         '.default-border-focus': {
           '@apply border-2 border-primary': {},
-        }
+        },
       });
     }),
   ],
