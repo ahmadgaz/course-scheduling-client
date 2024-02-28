@@ -5,6 +5,7 @@ import {
   Bars3Icon,
   XMarkIcon,
 } from '@heroicons/react/24/outline';
+import { signIn, useSession } from 'next-auth/react';
 import Link from 'next/link';
 import React from 'react';
 import clsx from 'clsx';
@@ -24,9 +25,10 @@ export default function Navbar() {
   const toggleMenu = () => setShowMenu(!showMenu);
   const [showSearch, setShowSearch] = React.useState(false);
   const toggleSearch = () => setShowSearch(!showSearch);
+  const { data: session, status } = useSession();
   return (
     <header className="border-b-2 border-border">
-      <nav className="animation mx-auto box-border flex h-[73px] items-center justify-between px-[32px] max-width">
+      <nav className="mx-auto box-border flex h-[73px] items-center justify-between px-[32px] animation max-width">
         <Button
           variant={<MagnifyingGlassIcon />}
           className={clsx('lg:hidden', { hidden: showSearch })}
@@ -80,8 +82,17 @@ export default function Navbar() {
           <div className="flex w-full items-center gap-[16px] max-lg:justify-between">
             <div className="h-[45px] w-[45px] lg:hidden" />
             <div className="flex items-center gap-[16px]">
-              <Button variant="primary">Register</Button>
-              <Button variant="ghost">Sign In</Button>
+              <Button
+                variant="ghost"
+                onClick={() =>
+                  signIn('google', undefined, { prompt: 'select_account' })
+                }
+              >
+                Sign In
+              </Button>
+              {status === 'authenticated' && session ? (
+                <p>Signed in as {session.user?.email}</p>
+              ) : null}
             </div>
             <Button
               className="lg:hidden"
